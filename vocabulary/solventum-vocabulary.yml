@@ -1,0 +1,223 @@
+vocabulary:
+  name: Solventum Health Information Systems Vocabulary
+  description: >-
+    Domain vocabulary for Solventum Health Information Systems covering
+    clinical coding, DRG grouping, computer-assisted coding, clinical
+    documentation improvement, and revenue cycle management terminology.
+  created: "2026-05-02"
+  modified: "2026-05-02"
+  tags:
+    - Clinical Coding
+    - Healthcare IT
+    - Health Information Systems
+    - ICD-10
+    - Revenue Cycle
+    - Solventum
+
+  terms:
+
+    - term: Computer-Assisted Coding (CAC)
+      category: Technology
+      definition: >-
+        AI and NLP technology that analyzes clinical documentation to suggest
+        ICD-10-CM, ICD-10-PCS, and CPT codes for coder review and acceptance.
+        Solventum's CAC engine uses deep learning models trained on millions
+        of clinical encounters to achieve high accuracy and confidence scoring.
+      relatedTerms:
+        - ICD-10-CM
+        - ICD-10-PCS
+        - CPT
+        - Natural Language Processing
+
+    - term: ICD-10-CM
+      category: Code Set
+      definition: >-
+        International Classification of Diseases, 10th Revision, Clinical
+        Modification — the U.S. standard for diagnosis coding. Used for
+        inpatient, outpatient, and physician office coding.
+      relatedTerms:
+        - ICD-10-PCS
+        - Diagnosis
+        - Principal Diagnosis
+
+    - term: ICD-10-PCS
+      category: Code Set
+      definition: >-
+        International Classification of Diseases, 10th Revision, Procedure
+        Coding System — the U.S. standard for inpatient procedure coding.
+        A 7-character alphanumeric code set with highly specific descriptions.
+      relatedTerms:
+        - ICD-10-CM
+        - Procedure
+        - Principal Procedure
+
+    - term: CPT
+      category: Code Set
+      definition: >-
+        Current Procedural Terminology — the AMA-maintained code set for
+        outpatient, ambulatory, and physician procedure coding. Used for
+        Medicare Part B and commercial outpatient claims.
+      relatedTerms:
+        - ICD-10-CM
+        - Outpatient Coding
+
+    - term: MS-DRG
+      category: Reimbursement
+      definition: >-
+        Medicare Severity Diagnosis-Related Group — the CMS payment system
+        for inpatient hospital stays. Each DRG represents a clinically
+        similar group of cases with a relative weight determining reimbursement.
+      relatedTerms:
+        - DRG Grouping
+        - Relative Weight
+        - Major Diagnostic Category
+
+    - term: DRG Grouping
+      category: Technology
+      definition: >-
+        The algorithmic process of assigning an encounter's codes to a
+        Diagnosis-Related Group. Solventum's grouper implements CMS MS-DRG
+        logic to produce the DRG, MDC, severity, and mortality risk scores.
+      relatedTerms:
+        - MS-DRG
+        - Principal Diagnosis
+        - Major Diagnostic Category
+
+    - term: Major Diagnostic Category (MDC)
+      category: Reimbursement
+      definition: >-
+        The highest-level grouping in the DRG system, typically corresponding
+        to a body system or etiology (e.g., MDC 05 = Diseases of the
+        Circulatory System). There are 25 MDCs in the MS-DRG system.
+      relatedTerms:
+        - MS-DRG
+
+    - term: Principal Diagnosis
+      category: Coding
+      definition: >-
+        The condition established after study to be chiefly responsible for
+        the patient's admission. The UHDDS definition used for inpatient
+        coding; determines DRG assignment.
+      relatedTerms:
+        - ICD-10-CM
+        - MS-DRG
+        - Secondary Diagnosis
+
+    - term: Secondary Diagnosis
+      category: Coding
+      definition: >-
+        Additional conditions that coexist with the principal diagnosis or
+        develop during the hospital stay, affecting patient care. Includes
+        comorbidities and complications (CCs and MCCs).
+      relatedTerms:
+        - Principal Diagnosis
+        - CC
+        - MCC
+
+    - term: CC (Complication or Comorbidity)
+      category: Coding
+      definition: >-
+        A secondary diagnosis that increases the complexity and resource
+        utilization of an encounter. CCs affect DRG assignment and
+        reimbursement by moving cases to higher-weighted DRGs.
+      relatedTerms:
+        - MCC
+        - MS-DRG
+        - Secondary Diagnosis
+
+    - term: MCC (Major Complication or Comorbidity)
+      category: Coding
+      definition: >-
+        A secondary diagnosis reflecting the highest level of resource
+        consumption and complexity. MCCs result in assignment to the
+        highest-paying tier of a DRG triplet.
+      relatedTerms:
+        - CC
+        - MS-DRG
+        - Severity of Illness
+
+    - term: Present on Admission (POA)
+      category: Coding
+      definition: >-
+        An indicator attached to each inpatient diagnosis specifying whether
+        the condition was present at the time of hospital admission. POA
+        indicators affect quality measure calculation and HAC (Hospital-Acquired
+        Condition) determination.
+      relatedTerms:
+        - Hospital-Acquired Condition
+        - ICD-10-CM
+        - Secondary Diagnosis
+
+    - term: Clinical Documentation Improvement (CDI)
+      category: Workflow
+      definition: >-
+        A systematic process of reviewing and improving clinical documentation
+        to ensure it accurately reflects the patient's conditions, severity,
+        and resource utilization. CDI specialists issue physician queries
+        to clarify vague or incomplete documentation.
+      relatedTerms:
+        - Physician Query
+        - Principal Diagnosis
+        - Severity of Illness
+
+    - term: Physician Query
+      category: Workflow
+      definition: >-
+        A compliant communication from a CDI specialist or coder to a
+        physician requesting clarification or additional specificity in
+        clinical documentation, following AHIMA and ACDIS guidelines.
+      relatedTerms:
+        - Clinical Documentation Improvement
+        - Principal Diagnosis
+
+    - term: Severity of Illness (SOI)
+      category: Quality
+      definition: >-
+        A measure of the physiological complexity of a patient's condition,
+        scored 1-4 (minor through extreme) in APR-DRG and similar systems.
+        Used for benchmarking, quality reporting, and risk adjustment.
+      relatedTerms:
+        - MS-DRG
+        - MCC
+        - Risk of Mortality
+
+    - term: Risk of Mortality (ROM)
+      category: Quality
+      definition: >-
+        A measure of the likelihood of patient death during the encounter,
+        scored 1-4 (minor through extreme). Used alongside SOI for
+        quality benchmarking and public reporting.
+      relatedTerms:
+        - Severity of Illness
+        - MS-DRG
+
+    - term: Revenue Cycle Management (RCM)
+      category: Business Process
+      definition: >-
+        The end-to-end financial process of a healthcare organization from
+        patient registration through claim submission, payment, and denial
+        management. Accurate coding is foundational to RCM performance.
+      relatedTerms:
+        - Computer-Assisted Coding
+        - DRG Grouping
+
+    - term: Relative Weight
+      category: Reimbursement
+      definition: >-
+        A numeric value assigned to each MS-DRG reflecting the relative
+        cost of care compared to the average Medicare inpatient case.
+        Hospital payment = base rate × relative weight.
+      relatedTerms:
+        - MS-DRG
+        - Revenue Cycle Management
+
+    - term: Health Information Systems (HIS)
+      category: Product Line
+      definition: >-
+        Solventum's (formerly 3M HIS) software division providing
+        computer-assisted coding, DRG grouping, CDI, revenue cycle analytics,
+        and quality reporting solutions to healthcare organizations worldwide.
+      relatedTerms:
+        - Computer-Assisted Coding
+        - DRG Grouping
+        - Clinical Documentation Improvement

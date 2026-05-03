@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solventum/main/json-schema/solventum-clinical-encounter-schema.json",
+  "title": "ClinicalEncounter",
+  "description": "A clinical encounter record submitted for computer-assisted coding and DRG grouping by Solventum Health Information Systems.",
+  "type": "object",
+  "properties": {
+    "encounterId": {
+      "type": "string",
+      "description": "Unique identifier for the encounter"
+    },
+    "patientId": {
+      "type": "string",
+      "description": "De-identified patient identifier"
+    },
+    "facilityId": {
+      "type": "string",
+      "description": "Healthcare facility identifier"
+    },
+    "encounterType": {
+      "type": "string",
+      "enum": ["inpatient", "outpatient", "emergency", "ambulatory", "observation"],
+      "description": "Type of clinical encounter"
+    },
+    "admissionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of admission (inpatient) or encounter date"
+    },
+    "dischargeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of discharge (inpatient encounters)"
+    },
+    "dischargeDisposition": {
+      "type": "string",
+      "description": "Patient discharge disposition code"
+    },
+    "patientAge": {
+      "type": "integer",
+      "description": "Patient age in years at time of encounter"
+    },
+    "patientSex": {
+      "type": "string",
+      "enum": ["M", "F", "U"],
+      "description": "Patient biological sex"
+    },
+    "attendingPhysician": {
+      "type": "object",
+      "description": "Attending physician information",
+      "properties": {
+        "npi": { "type": "string", "description": "National Provider Identifier" },
+        "specialty": { "type": "string", "description": "Physician specialty" }
+      }
+    },
+    "diagnoses": {
+      "type": "array",
+      "description": "List of diagnoses for coding",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string", "description": "ICD-10-CM diagnosis code" },
+          "description": { "type": "string", "description": "Diagnosis description" },
+          "type": { "type": "string", "enum": ["principal", "secondary", "admitting", "external-cause"], "description": "Diagnosis type" },
+          "poa": { "type": "string", "enum": ["Y", "N", "U", "W", "1"], "description": "Present on admission indicator" }
+        }
+      }
+    },
+    "procedures": {
+      "type": "array",
+      "description": "List of procedures performed",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string", "description": "ICD-10-PCS or CPT procedure code" },
+          "description": { "type": "string", "description": "Procedure description" },
+          "type": { "type": "string", "enum": ["principal", "secondary"], "description": "Procedure type" },
+          "performedDate": { "type": "string", "format": "date", "description": "Date procedure was performed" }
+        }
+      }
+    },
+    "clinicalNotes": {
+      "type": "array",
+      "description": "Unstructured clinical documentation for NLP-based coding",
+      "items": {
+        "type": "object",
+        "properties": {
+          "noteType": { "type": "string", "description": "Type of note (H&P, discharge summary, operative, etc.)" },
+          "content": { "type": "string", "description": "Note content text" },
+          "author": { "type": "string", "description": "Note author NPI" },
+          "dateTime": { "type": "string", "format": "date-time", "description": "Note creation timestamp" }
+        }
+      }
+    }
+  },
+  "required": ["encounterId", "encounterType", "admissionDate"]
+}

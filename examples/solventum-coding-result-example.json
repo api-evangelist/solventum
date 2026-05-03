@@ -1,0 +1,57 @@
+{
+  "encounterId": "ENC-2026-00012345",
+  "processingTimestamp": "2026-05-02T15:00:00Z",
+  "codeSetVersion": "FY2026",
+  "suggestedDiagnoses": [
+    {
+      "code": "I21.11",
+      "description": "ST elevation (STEMI) myocardial infarction involving right coronary artery",
+      "type": "principal",
+      "confidence": 0.97,
+      "evidenceText": "inferior STEMI ... RCA 100% occlusion",
+      "status": "accepted"
+    },
+    {
+      "code": "E11.9",
+      "description": "Type 2 diabetes mellitus without complications",
+      "type": "secondary",
+      "confidence": 0.94,
+      "evidenceText": "PMH: Type 2 DM",
+      "status": "accepted"
+    },
+    {
+      "code": "I10",
+      "description": "Essential (primary) hypertension",
+      "type": "secondary",
+      "confidence": 0.93,
+      "evidenceText": "PMH: HTN",
+      "status": "accepted"
+    }
+  ],
+  "suggestedProcedures": [
+    {
+      "code": "027034Z",
+      "description": "Dilation of coronary artery, one artery with drug-eluting intraluminal device, percutaneous approach",
+      "type": "principal",
+      "confidence": 0.96,
+      "evidenceText": "Successful PCI with drug-eluting stent placement to RCA",
+      "status": "accepted"
+    }
+  ],
+  "drgAssignment": {
+    "msdrg": "246",
+    "msdrgDescription": "Percutaneous Cardiovascular Procedures with Drug-Eluting Stent with MCC or 4+ Vessels/Stents",
+    "mdc": "05",
+    "severity": "2",
+    "mortalityRisk": "2",
+    "geometricMeanLos": 3.5,
+    "relativeWeight": 3.5421
+  },
+  "qualityFlags": [
+    {
+      "flagType": "DOCUMENTATION_SPECIFICITY",
+      "severity": "info",
+      "message": "Consider documenting chronic kidney disease stage if applicable for higher severity capture."
+    }
+  ]
+}

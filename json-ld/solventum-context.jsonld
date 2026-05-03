@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "fhir": "https://hl7.org/fhir/",
+    "snomed": "http://snomed.info/id/",
+    "icd10": "http://hl7.org/fhir/sid/icd-10-cm/",
+    "cpt": "http://www.ama-assn.org/go/cpt/",
+    "solventum": "https://www.solventum.com/vocabulary/",
+
+    "Organization": "schema:Organization",
+
+    "ClinicalEncounter": {
+      "@id": "fhir:Encounter",
+      "@context": {
+        "encounterId": "@id",
+        "encounterType": {
+          "@id": "fhir:Encounter.class",
+          "@type": "@id"
+        },
+        "admissionDate": "fhir:Encounter.period.start",
+        "dischargeDate": "fhir:Encounter.period.end",
+        "patientId": "fhir:Encounter.subject",
+        "facilityId": "fhir:Encounter.serviceProvider"
+      }
+    },
+
+    "Diagnosis": {
+      "@id": "fhir:Condition",
+      "@context": {
+        "code": {
+          "@id": "fhir:Condition.code",
+          "@type": "@id"
+        },
+        "description": "schema:description",
+        "poa": "solventum:presentOnAdmission"
+      }
+    },
+
+    "Procedure": {
+      "@id": "fhir:Procedure",
+      "@context": {
+        "code": {
+          "@id": "fhir:Procedure.code",
+          "@type": "@id"
+        },
+        "description": "schema:description",
+        "performedDate": "fhir:Procedure.performedDateTime"
+      }
+    },
+
+    "ClinicalNote": {
+      "@id": "fhir:DocumentReference",
+      "@context": {
+        "noteType": "fhir:DocumentReference.type",
+        "content": "fhir:DocumentReference.content",
+        "author": "fhir:DocumentReference.author",
+        "dateTime": "fhir:DocumentReference.date"
+      }
+    },
+
+    "CodingResult": {
+      "@id": "solventum:CodingResult",
+      "@context": {
+        "encounterId": "solventum:encounterId",
+        "processingTimestamp": "schema:dateCreated",
+        "drgAssignment": "solventum:drgAssignment"
+      }
+    },
+
+    "DRGAssignment": {
+      "@id": "solventum:DRGAssignment",
+      "@context": {
+        "msdrg": "solventum:msDRG",
+        "mdc": "solventum:majorDiagnosticCategory",
+        "severity": "solventum:severityOfIllness",
+        "mortalityRisk": "solventum:riskOfMortality",
+        "relativeWeight": "solventum:relativeWeight"
+      }
+    }
+  }
+}

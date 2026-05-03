@@ -1,0 +1,51 @@
+{
+  "encounterId": "ENC-2026-00012345",
+  "patientId": "PT-ANON-98765",
+  "facilityId": "FAC-MN-HOSPITAL-001",
+  "encounterType": "inpatient",
+  "admissionDate": "2026-04-28",
+  "dischargeDate": "2026-05-02",
+  "dischargeDisposition": "01",
+  "patientAge": 67,
+  "patientSex": "F",
+  "attendingPhysician": {
+    "npi": "1234567890",
+    "specialty": "Cardiology"
+  },
+  "diagnoses": [
+    {
+      "code": "I21.11",
+      "description": "ST elevation (STEMI) myocardial infarction involving right coronary artery",
+      "type": "principal",
+      "poa": "Y"
+    },
+    {
+      "code": "E11.9",
+      "description": "Type 2 diabetes mellitus without complications",
+      "type": "secondary",
+      "poa": "Y"
+    },
+    {
+      "code": "I10",
+      "description": "Essential (primary) hypertension",
+      "type": "secondary",
+      "poa": "Y"
+    }
+  ],
+  "procedures": [
+    {
+      "code": "027034Z",
+      "description": "Dilation of coronary artery, one artery with drug-eluting intraluminal device, percutaneous approach",
+      "type": "principal",
+      "performedDate": "2026-04-28"
+    }
+  ],
+  "clinicalNotes": [
+    {
+      "noteType": "discharge-summary",
+      "content": "67-year-old female presented with acute chest pain. EKG showed inferior STEMI. Emergent cath lab activation. RCA 100% occlusion found. Successful PCI with drug-eluting stent placement to RCA. Patient stabilized. PMH: Type 2 DM, HTN. Discharged to home in stable condition.",
+      "author": "1234567890",
+      "dateTime": "2026-05-02T14:30:00Z"
+    }
+  ]
+}

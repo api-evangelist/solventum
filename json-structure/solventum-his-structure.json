@@ -1,0 +1,81 @@
+{
+  "name": "Solventum Health Information Systems Structure",
+  "description": "JSON structure documentation for Solventum Health Information Systems core data entities used in clinical coding and revenue cycle workflows.",
+  "resources": [
+    {
+      "name": "ClinicalEncounter",
+      "description": "An inpatient or outpatient clinical encounter submitted for coding",
+      "fields": [
+        { "name": "encounterId", "type": "string", "required": true, "description": "Unique encounter identifier" },
+        { "name": "patientId", "type": "string", "required": false, "description": "De-identified patient ID" },
+        { "name": "facilityId", "type": "string", "required": false, "description": "Healthcare facility identifier" },
+        { "name": "encounterType", "type": "string", "enum": ["inpatient", "outpatient", "emergency", "ambulatory", "observation"], "required": true },
+        { "name": "admissionDate", "type": "string", "format": "date", "required": true },
+        { "name": "dischargeDate", "type": "string", "format": "date", "required": false },
+        { "name": "dischargeDisposition", "type": "string", "required": false },
+        { "name": "patientAge", "type": "integer", "required": false },
+        { "name": "patientSex", "type": "string", "enum": ["M", "F", "U"], "required": false },
+        { "name": "attendingPhysician", "type": "object", "required": false, "description": "NPI and specialty" },
+        { "name": "diagnoses", "type": "array", "items": "Diagnosis", "required": false },
+        { "name": "procedures", "type": "array", "items": "Procedure", "required": false },
+        { "name": "clinicalNotes", "type": "array", "items": "ClinicalNote", "required": false }
+      ]
+    },
+    {
+      "name": "Diagnosis",
+      "description": "A diagnosis code assigned to an encounter",
+      "fields": [
+        { "name": "code", "type": "string", "required": false, "description": "ICD-10-CM code" },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "type", "type": "string", "enum": ["principal", "secondary", "admitting", "external-cause"], "required": false },
+        { "name": "poa", "type": "string", "enum": ["Y", "N", "U", "W", "1"], "required": false, "description": "Present on admission" }
+      ]
+    },
+    {
+      "name": "Procedure",
+      "description": "A procedure code assigned to an encounter",
+      "fields": [
+        { "name": "code", "type": "string", "required": false, "description": "ICD-10-PCS or CPT code" },
+        { "name": "description", "type": "string", "required": false },
+        { "name": "type", "type": "string", "enum": ["principal", "secondary"], "required": false },
+        { "name": "performedDate", "type": "string", "format": "date", "required": false }
+      ]
+    },
+    {
+      "name": "ClinicalNote",
+      "description": "An unstructured clinical documentation note for NLP coding",
+      "fields": [
+        { "name": "noteType", "type": "string", "required": false, "description": "H&P, discharge summary, operative note, etc." },
+        { "name": "content", "type": "string", "required": false },
+        { "name": "author", "type": "string", "required": false, "description": "Author NPI" },
+        { "name": "dateTime", "type": "string", "format": "date-time", "required": false }
+      ]
+    },
+    {
+      "name": "CodingResult",
+      "description": "Output of the computer-assisted coding engine",
+      "fields": [
+        { "name": "encounterId", "type": "string", "required": true },
+        { "name": "processingTimestamp", "type": "string", "format": "date-time", "required": true },
+        { "name": "codeSetVersion", "type": "string", "required": false },
+        { "name": "suggestedDiagnoses", "type": "array", "items": "SuggestedCode", "required": false },
+        { "name": "suggestedProcedures", "type": "array", "items": "SuggestedCode", "required": false },
+        { "name": "drgAssignment", "type": "DRGAssignment", "required": false },
+        { "name": "qualityFlags", "type": "array", "items": "QualityFlag", "required": false }
+      ]
+    },
+    {
+      "name": "DRGAssignment",
+      "description": "Medicare Severity DRG assignment result",
+      "fields": [
+        { "name": "msdrg", "type": "string", "required": false, "description": "MS-DRG code" },
+        { "name": "msdrgDescription", "type": "string", "required": false },
+        { "name": "mdc", "type": "string", "required": false, "description": "Major Diagnostic Category" },
+        { "name": "severity", "type": "string", "enum": ["1", "2", "3", "4"], "required": false },
+        { "name": "mortalityRisk", "type": "string", "enum": ["1", "2", "3", "4"], "required": false },
+        { "name": "geometricMeanLos", "type": "number", "required": false },
+        { "name": "relativeWeight", "type": "number", "required": false }
+      ]
+    }
+  ]
+}

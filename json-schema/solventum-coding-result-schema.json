@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solventum/main/json-schema/solventum-coding-result-schema.json",
+  "title": "CodingResult",
+  "description": "The output of Solventum's computer-assisted coding (CAC) engine, including suggested ICD-10 codes, DRG assignment, and quality flags.",
+  "type": "object",
+  "properties": {
+    "encounterId": {
+      "type": "string",
+      "description": "Reference to the source encounter"
+    },
+    "processingTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When coding was performed"
+    },
+    "codeSetVersion": {
+      "type": "string",
+      "description": "ICD-10 code set version used (e.g., FY2026)"
+    },
+    "suggestedDiagnoses": {
+      "type": "array",
+      "description": "AI-suggested diagnosis codes with confidence scores",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string", "description": "ICD-10-CM code" },
+          "description": { "type": "string", "description": "Code description" },
+          "type": { "type": "string", "enum": ["principal", "secondary", "admitting", "external-cause"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "AI confidence score" },
+          "evidenceText": { "type": "string", "description": "Supporting text from clinical notes" },
+          "status": { "type": "string", "enum": ["suggested", "accepted", "rejected", "modified"], "description": "Coder review status" }
+        }
+      }
+    },
+    "suggestedProcedures": {
+      "type": "array",
+      "description": "AI-suggested procedure codes with confidence scores",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string", "description": "ICD-10-PCS or CPT code" },
+          "description": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidenceText": { "type": "string" },
+          "status": { "type": "string", "enum": ["suggested", "accepted", "rejected", "modified"] }
+        }
+      }
+    },
+    "drgAssignment": {
+      "type": "object",
+      "description": "Diagnosis-Related Group assignment result",
+      "properties": {
+        "msdrg": { "type": "string", "description": "Medicare Severity DRG code" },
+        "msdrgDescription": { "type": "string", "description": "MS-DRG description" },
+        "mdc": { "type": "string", "description": "Major Diagnostic Category" },
+        "severity": { "type": "string", "enum": ["1", "2", "3", "4"], "description": "Severity of illness (1=minor, 4=extreme)" },
+        "mortalityRisk": { "type": "string", "enum": ["1", "2", "3", "4"], "description": "Risk of mortality score" },
+        "geometricMeanLos": { "type": "number", "description": "Expected geometric mean length of stay" },
+        "relativeWeight": { "type": "number", "description": "MS-DRG relative weight for reimbursement" }
+      }
+    },
+    "qualityFlags": {
+      "type": "array",
+      "description": "Documentation quality and compliance alerts",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flagType": { "type": "string", "description": "Type of quality flag" },
+          "severity": { "type": "string", "enum": ["info", "warning", "error"] },
+          "message": { "type": "string", "description": "Flag description" }
+        }
+      }
+    }
+  },
+  "required": ["encounterId", "processingTimestamp"]
+}
