@@ -6,7 +6,7 @@ description: >-
   dental and orthodontic products, health information systems, and purification
   and filtration technologies. Solventum serves hospitals, clinics, dental
   practices, and healthcare IT organizations worldwide.
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Dental
