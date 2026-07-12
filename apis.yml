@@ -66,6 +66,8 @@ apis:
         url: https://www.solventum.com/en-us/home/health-information-systems/clinical-documentation-integrity/
 
 common:
+  - type: DomainSecurity
+    url: security/solventum-domain-security.yml
   - type: Website
     url: https://www.solventum.com
   - type: Documentation
