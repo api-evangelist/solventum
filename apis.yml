@@ -43,7 +43,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/solventum/refs/heads/main/apis.yml
 created: '2026-03-21'
-modified: '2026-05-02'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
   - aid: solventum:health-information-systems
@@ -89,6 +89,8 @@ apis:
         url: https://www.solventum.com/en-us/home/health-information-systems/clinical-documentation-integrity/
 
 common:
+  - url: https://news.solventum.com/press-releases/rss
+    type: BlogRSS
   - type: DomainSecurity
     url: security/solventum-domain-security.yml
   - type: Website
