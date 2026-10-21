@@ -77,3 +77,55 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: solventum-fda-establishment-registration-and-device-listing-ivd-surgical-specialties
+  label: FDA establishment registration and device listing (IVD / surgical specialties)
+  partner_name: FDA establishment registration and device listing (IVD / surgical specialties)
+  category: FDA-registered device establishment
+  type: contract
+  channel: regulator-register
+  evidence: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRL/rl.cfm
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: openFDA device/registrationlisting (owner/operator, device listings by medical specialty)
+    standard: FDA establishment registration and device listing (21 CFR 807)
+    spec_file: null
+    role: fda-registered-owner-operator
+    registered_name: Solventum US LLC
+    matched_domain: solventum.com
+    matched_by: domain
+    detected_by: sweep-ivd-diagnostics.py
+    detected: '2026-10-21'
+    listed_specialties:
+    - Hematology
+    - Microbiology
+    - General & Plastic Surgery
+    signal_note: 'REGULATED through the establishment registration: a registration is not a clearance, so no certified_products;
+      specialties are context, never counted'
+    identity: wikidata Q124795355 'Solventum' P856 https://www.solventum.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
+- slug: solventum-advameddx-members
+  label: AdvaMedDx (members)
+  partner_name: AdvaMedDx (members)
+  category: Diagnostics trade body member
+  type: register
+  channel: standard-directory
+  evidence: https://www.advamed.org/advameddx/members/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: AdvaMedDx member list (advamed.org/advameddx/members)
+    standard: null
+    spec_file: null
+    role: advameddx-member
+    registered_name: Solventum
+    matched_domain: solventum.com
+    matched_by: domain
+    detected_by: sweep-ivd-diagnostics.py
+    detected: '2026-10-21'
+    listed_website: https://www.solventum.com
+    signal_note: 'self-filed paid membership: listing alone = standard-participant; hand-reviewed'
+  status: not-a-workflow
+  arazzo: null
