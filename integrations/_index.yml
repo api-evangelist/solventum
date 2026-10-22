@@ -129,3 +129,57 @@
     signal_note: 'self-filed paid membership: listing alone = standard-participant; hand-reviewed'
   status: not-a-workflow
   arazzo: null
+- slug: solventum-health-canada-medical-device-licence
+  label: Health Canada (Medical Device Licence)
+  partner_name: Health Canada (Medical Device Licence)
+  category: Canadian medical device licence
+  type: contract
+  channel: regulator-register
+  evidence: https://health-products.canada.ca/api/medical-devices/company/?id=192518&lang=en&type=json
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Health Canada Medical Devices Active Licence Listing (MDALL) public API (health-products.canada.ca/api/medical-devices)
+    standard: Canada Medical Devices Regulations (SOR/98-282), Medical Device Licence
+    spec_file: null
+    role: licence-holder
+    registered_name: SOLVENTUM US LLC
+    register_country: US
+    register_id: https://health-products.canada.ca/api/medical-devices/company/?id=192518&lang=en&type=json
+    company_status: A
+    matched_domain: solventum.com
+    matched_by: domain
+    certified_products:
+    - product: Health Canada Medical Device Licence, Class II
+      product_type: Class II
+      risk_class: 2
+      lapsed: false
+      first_issued: '1998-11-09'
+      conditional: false
+      licences_sample:
+      - BAIR HUGGER WARMING GOWN
+      - ELECTROSURGICAL PATIENT PLATES
+      - ELECTROSURGICAL REUSABLE CABLE
+      - RED DOT RESTING EKG ELECTRODE
+      - TEGADERM +PAD FILM DRESSING WITH NON-ADHERENT PAD
+    - product: Health Canada Medical Device Licence, Class III
+      product_type: Class III
+      risk_class: 3
+      lapsed: false
+      first_issued: '1999-06-28'
+      conditional: false
+      licences_sample:
+      - FILTEK BULK FILL FLOWABLE RESTORATIVE
+      - FILTEK EASY MATCH FLOWABLE RESTORATIVE
+      - FILTEK EASY MATCH UNIVERSAL RESTORATIVE
+      - FILTEK SUPREME FLOWABLE RESTORATIVE
+      - RELY X LUTING CEMENT
+    signal_note: certified_products = one entry per device RISK CLASS licensed by Health Canada, lapsed when no
+      licence of that class is still issued (status I / D, no end date); licence names are a sample, licence and
+      device counts are context, never counted
+    detected_by: sweep-canada-medical-device-licensing.py
+    detected: '2026-10-22'
+    identity: wikidata Q124795355 'Solventum' P856 https://www.solventum.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
