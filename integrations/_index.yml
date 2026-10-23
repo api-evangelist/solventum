@@ -276,3 +276,49 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
+- slug: solventum-fda-establishment-registration-and-device-listing-radiology-cardiovascular-robotic-surgery
+  label: FDA establishment registration and device listing (radiology / cardiovascular / robotic surgery)
+  partner_name: FDA establishment registration and device listing (radiology / cardiovascular / robotic surgery)
+  category: FDA-registered device establishment
+  type: contract
+  channel: regulator-register
+  evidence: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRL/rl.cfm
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: openFDA device/registrationlisting (owner/operator; specialties Radiology + Cardiovascular, product
+      code NAY)
+    standard: FDA establishment registration and device listing (21 CFR 807)
+    spec_file: null
+    role: fda-registered-owner-operator
+    registered_name: Solventum US LLC
+    matched_domain: solventum.com
+    matched_by: domain
+    detected_by: sweep-fda-device-establishment-registrations.py
+    detected: '2026-10-23'
+    listed_specialties:
+    - Cardiovascular
+    specialty_tags:
+    - cardiovascular
+    owner_country: US
+    fei_sample:
+    - '3002806930'
+    - '3005178245'
+    - '3006808392'
+    product_codes_sample:
+    - OMP
+    - EMA
+    - EBF
+    - ELW
+    - KLE
+    - QBP
+    - EBZ
+    - ECM
+    nuclear_medicine_codes: []
+    signal_note: 'REGULATED through the establishment registration: a registration is not a clearance, so no certified_products;
+      specialties / product codes are context, never counted. Complements ivd-diagnostics'' registration edge (eight
+      other specialties)'
+    identity: wikidata Q124795355 'Solventum' P856 https://www.solventum.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
